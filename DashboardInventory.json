@@ -423,6 +423,42 @@
             "position": {
               "x": 0,
               "y": 16,
+              "colSpan": 3,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Lista IP Publicas",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "Resources\r\n| where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)\r\n| project properties.ipAddress\r\n| limit 1000",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "14": {
+            "position": {
+              "x": 3,
+              "y": 16,
               "colSpan": 5,
               "rowSpan": 4
             },
@@ -456,11 +492,11 @@
               "settings": {}
             }
           },
-          "14": {
+          "15": {
             "position": {
-              "x": 5,
+              "x": 8,
               "y": 16,
-              "colSpan": 9,
+              "colSpan": 6,
               "rowSpan": 4
             },
             "metadata": {
@@ -493,7 +529,7 @@
               "settings": {}
             }
           },
-          "15": {
+          "16": {
             "position": {
               "x": 14,
               "y": 16,
@@ -530,7 +566,7 @@
               "settings": {}
             }
           },
-          "16": {
+          "17": {
             "position": {
               "x": 0,
               "y": 20,
@@ -566,7 +602,7 @@
               "settings": {}
             }
           },
-          "17": {
+          "18": {
             "position": {
               "x": 9,
               "y": 20,
@@ -631,20 +667,21 @@
                 "value": "all"
               },
               "filteredPartIds": [
-                "StartboardPart-ArgQueryGridTile-6a451837-dfc7-4768-8687-de497a1c9249",
-                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c924b",
-                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c924d",
-                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c9251",
-                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c9253",
-                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c9255",
-                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c9259",
-                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c925b",
-                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c925d",
-                "StartboardPart-ArgQueryGridTile-6a451837-dfc7-4768-8687-de497a1c925f",
-                "StartboardPart-ArgQueryGridTile-6a451837-dfc7-4768-8687-de497a1c9261",
-                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c9265",
-                "StartboardPart-ArgQueryGridTile-6a451837-dfc7-4768-8687-de497a1c9267",
-                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c9269"
+                "StartboardPart-ArgQueryGridTile-d891c92a-488d-49e4-95d2-4d800164f911",
+                "StartboardPart-ArgQueryChartTile-d891c92a-488d-49e4-95d2-4d800164f913",
+                "StartboardPart-ArgQueryChartTile-d891c92a-488d-49e4-95d2-4d800164f915",
+                "StartboardPart-ArgQueryChartTile-d891c92a-488d-49e4-95d2-4d800164f919",
+                "StartboardPart-ArgQueryChartTile-d891c92a-488d-49e4-95d2-4d800164f91b",
+                "StartboardPart-ArgQueryChartTile-d891c92a-488d-49e4-95d2-4d800164f91d",
+                "StartboardPart-ArgQueryChartTile-d891c92a-488d-49e4-95d2-4d800164f921",
+                "StartboardPart-ArgQueryGridTile-d891c92a-488d-49e4-95d2-4d800164f923",
+                "StartboardPart-ArgQueryChartTile-d891c92a-488d-49e4-95d2-4d800164f925",
+                "StartboardPart-ArgQueryChartTile-d891c92a-488d-49e4-95d2-4d800164f929",
+                "StartboardPart-ArgQueryChartTile-d891c92a-488d-49e4-95d2-4d800164f92b",
+                "StartboardPart-ArgQueryChartTile-d891c92a-488d-49e4-95d2-4d800164f92d",
+                "StartboardPart-ArgQueryGridTile-d891c92a-488d-49e4-95d2-4d800164f92f",
+                "StartboardPart-ArgQueryGridTile-d891c92a-488d-49e4-95d2-4d800164f931",
+                "StartboardPart-ArgQueryGridTile-d891c92a-488d-49e4-95d2-4d800164f933"
               ]
             }
           }

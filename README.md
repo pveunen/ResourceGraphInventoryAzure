@@ -6,3 +6,8 @@
 
 ## Installing
 Enter your [Portal Azure](https://portal.azure.com), click in "Dashboard" and click "Upload", select file .json
+
+<p align="center">
+        <img src="capture.jpg" alt="Capture" height="720px" />
+</p>
+

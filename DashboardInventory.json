@@ -1,0 +1,662 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 19,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# Informacíon General\n",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "1": {
+            "position": {
+              "x": 0,
+              "y": 1,
+              "colSpan": 5,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Tenant y Suscripciones ",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "distinct(tenantId), subscriptionId",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "2": {
+            "position": {
+              "x": 5,
+              "y": 1,
+              "colSpan": 9,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Recursos por localización",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "summarize count() by location | project  location, total=count_ \r\n\r\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "value": 1,
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+              "settings": {}
+            }
+          },
+          "3": {
+            "position": {
+              "x": 14,
+              "y": 1,
+              "colSpan": 5,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Top 10 Recursos por tipo",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "value": 2,
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "summarize count() by type\r\n| project type, total=count_\r\n| top 10 by total",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+              "settings": {}
+            }
+          },
+          "4": {
+            "position": {
+              "x": 0,
+              "y": 5,
+              "colSpan": 19,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# Maquinas Virtuales",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "5": {
+            "position": {
+              "x": 0,
+              "y": 6,
+              "colSpan": 5,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "VMs por Sistema Operativo",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "value": 2,
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "extend OsOffer = aliases['Microsoft.Compute/virtualMachines/storageProfile.imageReference.offer']\r\n| where type =~ 'Microsoft.Compute/virtualmachines'\r\n| summarize count() by tostring(OsOffer)\r\n| project OsOffer, total=count_",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+              "settings": {}
+            }
+          },
+          "6": {
+            "position": {
+              "x": 5,
+              "y": 6,
+              "colSpan": 9,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "VMs por SKU",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "extend sku = aliases['Microsoft.Compute/virtualMachines/sku.name'] \r\n| where type=~'Microsoft.Compute/virtualMachines'\r\n| summarize count() by tostring(sku)\r\n| project sku, total=count_",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "value": 1,
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+              "settings": {}
+            }
+          },
+          "7": {
+            "position": {
+              "x": 14,
+              "y": 6,
+              "colSpan": 5,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "VMs por Localización",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "where type =~ 'Microsoft.Compute/virtualmachines'\r\n| summarize count() by location\r\n| project location, total=count_",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "value": 2,
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+              "settings": {}
+            }
+          },
+          "8": {
+            "position": {
+              "x": 0,
+              "y": 10,
+              "colSpan": 19,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# Cuentas de Almacenamiento",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "9": {
+            "position": {
+              "x": 0,
+              "y": 11,
+              "colSpan": 5,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Storage Account Configured with HTTPS Only Access",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "value": 2,
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "extend HTTPSOnly = aliases['Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly']\r\n| where type =~ \"microsoft.storage/storageaccounts\" and HTTPSOnly =~ 'false'\r\n| summarize count() by subscriptionId\r\n| project subscriptionId, Total=count_",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+              "settings": {}
+            }
+          },
+          "10": {
+            "position": {
+              "x": 5,
+              "y": 11,
+              "colSpan": 9,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Informacion general de las cuentas de almacenamiento",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "extend HTTPSOnly = aliases['Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly']\r\n| extend Type = aliases['Microsoft.Storage/storageAccounts/accountType']\r\n| extend BlobEncryption = aliases['Microsoft.Storage/storageAccounts/enableBlobEncryption']\r\n| extend FileEncryption = aliases['Microsoft.Storage/storageAccounts/enableFileEncryption']\r\n| where type =~ \"microsoft.storage/storageaccounts\"\r\n| project Name=['name'], Kind=['kind'], Type, HTTPSOnly, BlobEncryption, FileEncryption, Location=['location']",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "11": {
+            "position": {
+              "x": 14,
+              "y": 11,
+              "colSpan": 5,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Cuentas de almacenamiento por localización",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "where type =~ \"microsoft.storage/storageaccounts\"\r\n| summarize count() by location\r\n|project Location=['location'], Total=count_",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "value": 2,
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+              "settings": {}
+            }
+          },
+          "12": {
+            "position": {
+              "x": 0,
+              "y": 15,
+              "colSpan": 19,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# App Services",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "13": {
+            "position": {
+              "x": 0,
+              "y": 16,
+              "colSpan": 5,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "App Services by Kind",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "extend httpsOnly = aliases['Microsoft.Web/sites/httpsOnly'] \r\n| where type=~'Microsoft.Web/Sites'\r\n| summarize count() by kind\r\n| project kind, total=count_",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "value": 2,
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+              "settings": {}
+            }
+          },
+          "14": {
+            "position": {
+              "x": 5,
+              "y": 16,
+              "colSpan": 9,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "App Service Plans by SKU",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "extend sku = aliases['Microsoft.Web/serverfarms/sku.name'] \r\n| where type=~'Microsoft.Web/serverfarms'\r\n| summarize count() by tostring(sku)\r\n| project sku, total=count_",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "value": 1,
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+              "settings": {}
+            }
+          },
+          "15": {
+            "position": {
+              "x": 14,
+              "y": 16,
+              "colSpan": 5,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "HTTPS Only configuration disabled on App Services",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "extend httpsOnly = aliases['Microsoft.Web/sites/httpsOnly'] \r\n| where type=~'Microsoft.Web/Sites' and httpsOnly =~ 'false'\r\n| summarize count() by subscriptionId\r\n| project subscriptionId, total=count_",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "value": 2,
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+              "settings": {}
+            }
+          },
+          "16": {
+            "position": {
+              "x": 0,
+              "y": 20,
+              "colSpan": 9,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "Stopped App Sevices",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "extend state = aliases['Microsoft.Web/sites/state'] \r\n|extend hostname = aliases['Microsoft.Web/sites/defaultHostName']\r\n| where type=~'Microsoft.Web/Sites' and state =~ 'stopped'\r\n| project state, name, kind, hostname",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          },
+          "17": {
+            "position": {
+              "x": 9,
+              "y": 20,
+              "colSpan": 10,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "partTitle",
+                  "value": "App Service Plan Basic Information",
+                  "isOptional": true
+                },
+                {
+                  "name": "query",
+                  "value": "extend NumberOfApps = aliases['Microsoft.Web/serverFarms/numberOfSites'] \r\n|where type=~'Microsoft.Web/serverfarms'\r\n| project Name=['name'], NumberOfApps, Location=['location']",
+                  "isOptional": true
+                },
+                {
+                  "name": "chartType",
+                  "isOptional": true
+                },
+                {
+                  "name": "isShared",
+                  "isOptional": true
+                },
+                {
+                  "name": "queryId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+              "settings": {}
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_Subscription": {
+              "model": {
+                "operator": "equals",
+                "selectAllState": "all"
+              },
+              "displayCache": {
+                "name": "Subscription",
+                "value": "all"
+              },
+              "filteredPartIds": [
+                "StartboardPart-ArgQueryGridTile-6a451837-dfc7-4768-8687-de497a1c9249",
+                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c924b",
+                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c924d",
+                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c9251",
+                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c9253",
+                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c9255",
+                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c9259",
+                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c925b",
+                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c925d",
+                "StartboardPart-ArgQueryGridTile-6a451837-dfc7-4768-8687-de497a1c925f",
+                "StartboardPart-ArgQueryGridTile-6a451837-dfc7-4768-8687-de497a1c9261",
+                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c9265",
+                "StartboardPart-ArgQueryGridTile-6a451837-dfc7-4768-8687-de497a1c9267",
+                "StartboardPart-ArgQueryChartTile-6a451837-dfc7-4768-8687-de497a1c9269"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "Resource Graph - Inventory",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "Resource Graph - Inventory"
+  },
+  "apiVersion": "2015-08-01-preview"
+}
